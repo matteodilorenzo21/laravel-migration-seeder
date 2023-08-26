@@ -16,15 +16,18 @@ class TrainSeeder extends Seeder
     // FakerPHP istances
     public function run(Faker $faker): void
     {
-        $train = new Train();
-        $train->azienda = $faker->company;
-        $train->stazione_partenza = $faker->city;
-        $train->stazione_arrivo = $faker->city;
-        $train->orario_partenza = $faker->time();
-        $train->orario_arrivo = $faker->time();
-        $train->codice_treno = 'TRN' . $faker->unique()->numberBetween(100, 999);
-        $train->numero_carrozze = $faker->numberBetween(1, 10);
-        $train->save();
+        // FOR loop to create istances
+        for ($i = 0; $i < 25; $i++) {
+            $train = new Train();
+            $train->azienda = $faker->company;
+            $train->stazione_partenza = $faker->city;
+            $train->stazione_arrivo = $faker->city;
+            $train->orario_partenza = $faker->time();
+            $train->orario_arrivo = $faker->time();
+            $train->codice_treno = 'TRN' . $faker->unique()->numberBetween(100, 999);
+            $train->numero_carrozze = $faker->numberBetween(1, 10);
+            $train->save();
+        }
     }
 
     /**
